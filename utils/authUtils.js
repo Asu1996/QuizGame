@@ -10,4 +10,13 @@ const generateHashedPassword = async (originalPassword) => {
     return bcrypt.hash(originalPassword, salt);
 };
 
-module.exports = { generateHashedPassword };
+/**
+ * @param {string} enteredPassword
+ * @param {string} userPassword
+ * @returns {Promise<boolean>}
+ */
+const comparePassword = async (enteredPassword, userPassword) => {
+    return bcrypt.compare(enteredPassword, userPassword);
+};
+
+module.exports = { generateHashedPassword, comparePassword };
