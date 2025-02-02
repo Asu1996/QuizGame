@@ -16,8 +16,13 @@ const gameSessionSchema = new mongoose.Schema(
         ],
         answers: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'User',
+                player: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+                question: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Question',
+                },
+                answer: String,
+                isCorrect: Boolean,
             },
         ],
         finalScores: {
