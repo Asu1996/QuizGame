@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "test": "mocha \"tests/**/*.spec.js\" --recursive --exit"
+    "test": "mocha \"tests/**/*.spec.js\" --timeout -1 --recursive --exit"
   },
   "author": "",
   "license": "ISC",

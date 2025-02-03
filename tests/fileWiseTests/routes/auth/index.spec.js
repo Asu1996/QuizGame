@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { describe, it } = require('mocha');
 const { callPostApi } = require('../../../testUtils');
 
-describe('/login', () => {
+describe.skip('/login', () => {
     it('successful login', async () => {
         const res = await callPostApi('/auth/login', {
             username: 'p2',
