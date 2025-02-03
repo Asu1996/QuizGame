@@ -1,5 +1,12 @@
+const { WebSocket } = require('ws');
 const GameSession = require('../../db/models/GameSession');
 
+/**
+ *
+ * @param {any} data
+ * @param {WebSocket} ws
+ * @param {Map<string, number>} playerQuestionTrack
+ */
 const sendQuestion = async (data, ws, playerQuestionTrack) => {
     const session = await GameSession.findById(data.sessionId).populate(
         'questions'

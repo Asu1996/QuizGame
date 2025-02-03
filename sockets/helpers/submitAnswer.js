@@ -1,7 +1,20 @@
+const { WebSocket } = require('ws');
 const GameSession = require('../../db/models/GameSession');
 const Question = require('../../db/models/Question');
 
-const submitAnswer = async (data, ws, playerConnections, playerQuestionTrack) => {
+/**
+ * @param {any} data
+ * @param {WebSocket} ws
+ * @param {Map<string, WebSocket>} playerConnections
+ * @param {Map<string, number>} playerQuestionTrack
+ * @returns
+ */
+const submitAnswer = async (
+    data,
+    ws,
+    playerConnections,
+    playerQuestionTrack
+) => {
     const session = await GameSession.findById(data.sessionId);
     const question = await Question.findById(data.questionId);
 
@@ -35,7 +48,10 @@ const submitAnswer = async (data, ws, playerConnections, playerQuestionTrack) =>
         { $set: { answers: sessionAnswers } }
     );
 
-    playerQuestionTrack.set(data.playerId, playerQuestionTrack.get(data.playerId) + 1);
+    playerQuestionTrack.set(
+        data.playerId,
+        playerQuestionTrack.get(data.playerId) + 1
+    );
     ws.send(
         JSON.stringify({
             event: 'answer:submit',
