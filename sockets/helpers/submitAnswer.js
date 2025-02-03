@@ -7,7 +7,6 @@ const Question = require('../../db/models/Question');
  * @param {WebSocket} ws
  * @param {Map<string, WebSocket>} playerConnections
  * @param {Map<string, number>} playerQuestionTrack
- * @returns
  */
 const submitAnswer = async (
     data,
@@ -103,6 +102,7 @@ const submitAnswer = async (
                             [session.players[1]]: player2Score,
                         },
                     })
+                    // delete stored web socket?
                 );
             }
         });

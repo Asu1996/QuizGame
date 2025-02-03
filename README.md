@@ -12,3 +12,4 @@ Things that can be added/improved:
 - test cases with websockets (since postman collection could not be exported)
 - time limit for answering a question. it is unlimited for now.
 - setup github actions to deploy to Render on push to main branch.
+- setup logs for all requests and responses.

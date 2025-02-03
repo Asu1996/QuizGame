@@ -1,3 +1,4 @@
+const { initiateGame } = require('./helpers/initiateGame');
 const { sendQuestion } = require('./helpers/sendQuestion');
 const { submitAnswer } = require('./helpers/submitAnswer');
 
@@ -10,11 +11,12 @@ const gameWebSocket = (wss) => {
             const data = JSON.parse(message);
 
             if (data.event === 'game:init') {
-                playerConnections.set(data.playerId, ws);
-
-                if (!playerQuestionTrack.has(data.playerId)) {
-                    playerQuestionTrack.set(data.playerId, 0);
-                }
+                await initiateGame(
+                    data,
+                    ws,
+                    playerConnections,
+                    playerQuestionTrack
+                );
             }
 
             if (data.event === 'question:send') {
@@ -22,7 +24,12 @@ const gameWebSocket = (wss) => {
             }
 
             if (data.event === 'answer:submit') {
-                await submitAnswer(data, ws, playerConnections, playerQuestionTrack);
+                await submitAnswer(
+                    data,
+                    ws,
+                    playerConnections,
+                    playerQuestionTrack
+                );
             }
         });
     });
