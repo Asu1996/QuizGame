@@ -1,5 +1,5 @@
-const GameSession = require('../db/models/GameSession');
-const Question = require('../db/models/Question');
+const GameSession = require('../../db/models/GameSession');
+const Question = require('../../db/models/Question');
 
 const startGameController = async (req, res) => {
     const {

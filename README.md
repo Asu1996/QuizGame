@@ -13,3 +13,13 @@ Things that can be added/improved:
 - time limit for answering a question. it is unlimited for now.
 - setup github actions to deploy to Render on push to main branch.
 - setup logs for all requests and responses.
+
+
+TODO:
+- fix concurrent requests issue
+    - no use of queues
+    - no queue patterns
+    - no use of other services
+    - no use of nodejs sync code
+    - only db 
+    - last resort: transactions & locks
