@@ -10,4 +10,8 @@ const connectDB = async () => {
     }
 };
 
-module.exports = { connectDB };
+const getConnection = () => {
+    return mongoose.connection.getClient();
+};
+
+module.exports = { connectDB, getConnection };

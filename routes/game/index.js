@@ -6,9 +6,14 @@ const router = require('express').Router();
 // } = require('../../controllers/gameControllers/gameController');
 
 // handled concurrency using mongoose findOneAndUpdate
+// const {
+//     startGameController,
+// } = require('../../controllers/gameControllers/gameController2');
+
+// handled concurrency using withTransaction
 const {
     startGameController,
-} = require('../../controllers/gameControllers/gameController2');
+} = require('../../controllers/gameControllers/gameController3');
 
 const { authMiddleware } = require('../../middlewares/authMiddleware');
 
